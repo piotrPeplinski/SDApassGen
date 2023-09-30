@@ -7,8 +7,8 @@
 </head>
 <body>
     <h1>Choose password parameters</h1>
-    <form action="">
-        <select name="" id="">
+    <form action="{% url 'password' %}" method="post">
+        <select name="length" required>
             <option value="" selected disabled>Length</option>
             <option value="8">8</option>
             <option value="9">9</option>
@@ -16,14 +16,15 @@
         </select>
 
         <label for="big_letters">Capital letters</label>
-        <input type="checkbox" id="big_letters">
+        <input type="checkbox" id="big_letters" name="big">
 
         <label for="numbers">Numbers</label>
-        <input type="checkbox" id="numbers">
-        
-        <label for="specials">Special chars</label>
-        <input type="checkbox" id="specials">
+        <input type="checkbox" id="numbers" name="numbers">
 
+        <label for="specials">Special chars</label>
+        <input type="checkbox" id="specials" name="specials">
+
+        {% csrf_token %}
         <button type="submit">Generate</button>
     </form>
 </body>
